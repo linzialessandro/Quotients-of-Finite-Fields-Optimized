@@ -5,14 +5,77 @@ This module provides a command-line interface for generating and analyzing
 quotient hyperfields.
 """
 
+import pandas as pd
+
 from hyperfield.analysis import (
     generate_triples,
     classify_hyperfields,
     analyze_characteristics,
 )
 from hyperfield.isomorphism import are_isomorphic_optimized
+from hyperfield.core import (
+    build_field_and_subgroup,
+    gf_coset_representatives,
+    build_addition_table_gf,
+)
 from visualization import visualize_characteristics
 from utils import is_prime
+
+# Helper function for displaying tables in a console-friendly way
+try:
+    from IPython.display import display as _ipython_display
+    def display(obj):  # noqa: A001 - shadow built-in name intentionally for notebooks
+        _ipython_display(obj)
+except Exception:
+    def display(obj):
+        try:
+            print(obj.to_string())
+        except Exception:
+            print(obj)
+
+def generate_and_display_table():
+    """
+    Prompts the user for p, k, d and displays the additive table of the resulting hyperfield.
+    """
+    print("\nGenerate Additive Table for a Hyperfield")
+    print("=" * 40)
+
+    while True:
+        try:
+            p = int(input("Enter a prime number p: "))
+            k = int(input("Enter an integer k >= 1: "))
+            q = p ** k
+            print(f"p^k - 1 = {q - 1}")
+            d = int(input(f"Enter divisor d of {q - 1}: "))
+
+            if not is_prime(p):
+                print("Error: p must be a prime number.")
+                continue
+            if k <= 0:
+                print("Error: k must be a positive integer.")
+                continue
+            if d <= 0 or (q - 1) % d != 0:
+                print(f"Error: d must be a positive divisor of {q - 1}.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input, please enter integer values.")
+        except KeyboardInterrupt:
+            print("\nExiting to main menu...")
+            return
+
+    try:
+        GF, subgroup_keys = build_field_and_subgroup(p, k, d)
+        reps = gf_coset_representatives(GF, subgroup_keys)
+
+        print(f"Field GF({p}^{k}) has order {p ** k}. Subgroup order d = {d}.")
+        print(f"Coset representatives count: {len(reps)} (total quotient hyperfield order {len(reps) + 1})")
+
+        table_df = build_addition_table_gf(GF, subgroup_keys, reps)
+        print("\nAdditive hyperoperation table (+):\n")
+        display(table_df)
+    except Exception as e:
+        print(f"An error occurred during table generation: {e}")
 
 def run_analysis():
     """
@@ -39,24 +102,27 @@ def run_analysis():
             break
         except ValueError:
             print("Invalid input. Please enter integer values.")
+        except KeyboardInterrupt:
+            print("\nExiting to main menu...")
+            return
 
     print(f"\nGenerating triples for n={n}, max_p={max_p}, max_k={max_k}...")
     triples = generate_triples(n, max_p, max_k)
-    print(f"Found {len(triples)} valid triples.")
+    print(f"Found {len(triples)} valid triples.\n")
 
     if not triples:
         print("No valid triples found for the given inputs. Cannot proceed with classification or analysis.")
         return
 
-    print("\nClassifying hyperfields into isomorphism classes (using optimized check)...")
+    print("Classifying hyperfields into isomorphism classes (using optimized check)...")
     isomorphism_classes = classify_hyperfields(n, max_p, max_k)
-    print(f"Found {len(isomorphism_classes)} distinct isomorphism classes.")
+    print(f"Found {len(isomorphism_classes)} distinct isomorphism classes.\n")
 
     if not isomorphism_classes:
         print("No isomorphism classes found. Cannot proceed with analysis or visualization.")
         return
 
-    print("\nAnalyzing characteristics for each isomorphism class representative...")
+    print("Analyzing characteristics for each isomorphism class representative...")
     characteristics, c_characteristics = analyze_characteristics(isomorphism_classes)
     print("Characteristic values:", characteristics)
     print("C-characteristic values:", c_characteristics)
@@ -89,20 +155,21 @@ def main_isomorphism_check():
                 print("Error: Both p1 and p2 must be prime numbers.")
                 continue
             if k1 <= 0 or k2 <= 0:
-                print("Error: Both k1 and k2 must be positive integers.")
+                print("Error: Both k1 and k2 must be positive integers.
+")
                 continue
             if d1 <= 0 or (q1 - 1) % d1 != 0:
-                print(f"Error: d1 must divide {q1 - 1}.")
+                print(f"Error: d1 must be a positive divisor of {q1 - 1}.")
                 continue
             if d2 <= 0 or (q2 - 1) % d2 != 0:
-                print(f"Error: d2 must divide {q2 - 1}.")
+                print(f"Error: d2 must be a positive divisor of {q2 - 1}.")
                 continue
 
             break
         except ValueError:
             print("Invalid input, please enter integer values.")
         except KeyboardInterrupt:
-            print("\nExiting...")
+            print("\nExiting to main menu...")
             return
 
     print(f"\nChecking isomorphism between GF({p1}^{k1})/G_{d1} and GF({p2}^{k2})/G_{d2}...")
@@ -114,15 +181,18 @@ if __name__ == "__main__":
         print("\nSelect an option:")
         print("1. Run hyperfield analysis and visualization")
         print("2. Check isomorphism between two hyperfields")
-        print("3. Exit")
+        print("3. Generate additive table for a specific hyperfield")
+        print("4. Exit")
 
-        choice = input("Enter your choice (1, 2, or 3): ")
+        choice = input("Enter your choice (1, 2, 3, or 4): ")
 
         if choice == '1':
             run_analysis()
         elif choice == '2':
             main_isomorphism_check()
         elif choice == '3':
+            generate_and_display_table()
+        elif choice == '4':
             print("Exiting...")
             break
         else:

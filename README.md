@@ -49,7 +49,7 @@ The project is organized into several modules for better readability and maintai
 
 ## Usage
 
-To run the application, execute `main.py`:
+To run the application, execute `python main.py`:
 
 ```bash
 python main.py
@@ -59,4 +59,5 @@ You will be presented with a menu to choose from:
 
 1.  **Run hyperfield analysis and visualization:** This option allows you to generate, classify, analyze, and visualize hyperfields based on user-defined parameters (n, max_p, max_k).
 2.  **Check isomorphism between two hyperfields:** This option lets you input parameters for two hyperfields and determine if they are isomorphic.
-3.  **Exit:** Exits the application.
+3.  **Generate additive table for a specific hyperfield:** This option prompts for `p`, `k`, and `d` and displays the additive hyperoperation table for the resulting hyperfield.
+4.  **Exit:** Exits the application.
