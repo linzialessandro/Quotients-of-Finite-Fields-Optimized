@@ -34,3 +34,29 @@ Here's a brief overview of the process implemented:
 4.  The additive hyperoperation is computed based on Krasner's quotient construction for pairs of cosets (including the zero element).
 
 For isomorphism checking, the characteristics and c-characteristics of the hyperfields are compared.
+
+## Project Structure
+
+The project is organized into several modules for better readability and maintainability:
+
+*   `main.py`: The main entry point of the application, providing a command-line interface.
+*   `utils.py`: Contains general utility functions like primality testing and prime factorization.
+*   `visualization.py`: Handles the visualization of hyperfield characteristics.
+*   `hyperfield/`:
+    *   `core.py`: Implements the core logic for hyperfield construction and operations.
+    *   `isomorphism.py`: Contains functions for checking isomorphism between hyperfields.
+    *   `analysis.py`: Provides functions for generating and classifying hyperfields for analysis.
+
+## Usage
+
+To run the application, execute `main.py`:
+
+```bash
+python main.py
+```
+
+You will be presented with a menu to choose from:
+
+1.  **Run hyperfield analysis and visualization:** This option allows you to generate, classify, analyze, and visualize hyperfields based on user-defined parameters (n, max_p, max_k).
+2.  **Check isomorphism between two hyperfields:** This option lets you input parameters for two hyperfields and determine if they are isomorphic.
+3.  **Exit:** Exits the application.
