@@ -1,0 +1,36 @@
+# Hyperfield Additive Table Generator and Isomorphism Analyzer
+
+Welcome to this repository! This project provides tools to explore quotient hyperfields of the form GF(p^k) / G_d, where G_d is a multiplicative subgroup of GF(p^k) of order `d`.
+
+## Features
+
+*   **Generate Additive Tables:** You can input a prime `p`, an integer `k`, and a divisor `d` of `p^k - 1` to see the additive hyperoperation table for the resulting hyperfield.
+*   **Check for Isomorphism:** You can input parameters for two hyperfields and the tool can tell you if they are isomorphic.
+*   **Analyze and Visualize:** You can specify parameters to generate a range of potential hyperfields, classify them into isomorphism classes, and visualize the distribution of their characteristics and c-characteristics.
+
+## Requirements
+
+To run this project, you'll need the following Python libraries:
+
+*   Python 3.6+
+*   pandas
+*   galois
+*   matplotlib
+*   numpy
+
+You can install the dependencies using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+## How it Works
+
+Here's a brief overview of the process implemented:
+
+1.  The `galois` library is used to construct finite fields GF(p^k).
+2.  A primitive element is identified to construct the multiplicative subgroup of order `d`.
+3.  The coset representatives of GF(p^k)^*/G_d are determined.
+4.  The additive hyperoperation is computed based on Krasner's quotient construction for pairs of cosets (including the zero element).
+
+For isomorphism checking, the characteristics and c-characteristics of the hyperfields are compared.
