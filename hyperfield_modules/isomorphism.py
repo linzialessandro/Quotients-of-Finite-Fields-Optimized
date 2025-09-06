@@ -7,7 +7,7 @@ It includes both a general method and an optimized criterion.
 
 import numpy as np
 
-from hyperfield.core import (
+from hyperfield_modules.core import (
     build_field_and_subgroup,
     gf_coset_representatives,
     build_element_to_coset_index,

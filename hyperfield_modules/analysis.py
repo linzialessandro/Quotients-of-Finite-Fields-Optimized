@@ -6,8 +6,8 @@ hyperfields into isomorphism classes, and analyzing their characteristics.
 """
 
 from utils import is_prime
-from hyperfield.isomorphism import are_isomorphic_optimized
-from hyperfield.core import (
+from hyperfield_modules.isomorphism import are_isomorphic_optimized
+from hyperfield_modules.core import (
     build_field_and_subgroup,
     gf_coset_representatives,
     gf_characteristic,

@@ -7,13 +7,13 @@ quotient hyperfields.
 
 import pandas as pd
 
-from hyperfield.analysis import (
+from hyperfield_modules.analysis import (
     generate_triples,
     classify_hyperfields,
     analyze_characteristics,
 )
-from hyperfield.isomorphism import are_isomorphic_optimized
-from hyperfield.core import (
+from hyperfield_modules.isomorphism import are_isomorphic_optimized
+from hyperfield_modules.core import (
     build_field_and_subgroup,
     gf_coset_representatives,
     build_addition_table_gf,

@@ -42,7 +42,7 @@ The project is organized into several modules for better readability and maintai
 *   `main.py`: The main entry point of the application, providing a command-line interface.
 *   `utils.py`: Contains general utility functions like primality testing and prime factorization.
 *   `visualization.py`: Handles the visualization of hyperfield characteristics.
-*   `hyperfield/`:
+*   `hyperfield_modules/`:
     *   `core.py`: Implements the core logic for hyperfield construction and operations.
     *   `isomorphism.py`: Contains functions for checking isomorphism between hyperfields.
     *   `analysis.py`: Provides functions for generating and classifying hyperfields for analysis.
