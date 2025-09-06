@@ -101,7 +101,7 @@ def run_analysis():
                 continue
             break
         except ValueError:
-            print("Invalid input. Please enter integer values.")
+            print("Invalid input, please enter integer values.")
         except KeyboardInterrupt:
             print("\nExiting to main menu...")
             return
@@ -131,7 +131,9 @@ def run_analysis():
     visualize_characteristics(characteristics, c_characteristics)
 
 def main_isomorphism_check():
-    """Interactive main function for testing the generalized isomorphism check."""
+    """
+    Interactive main function for testing the generalized isomorphism check.
+    """
     print("Generalized Isomorphism Check for Quotient Hyperfields GF(p^k)/G_d")
     print("=" * 70)
 
@@ -155,8 +157,7 @@ def main_isomorphism_check():
                 print("Error: Both p1 and p2 must be prime numbers.")
                 continue
             if k1 <= 0 or k2 <= 0:
-                print("Error: Both k1 and k2 must be positive integers.
-")
+                print("Error: Both k1 and k2 must be positive integers.\n")
                 continue
             if d1 <= 0 or (q1 - 1) % d1 != 0:
                 print(f"Error: d1 must be a positive divisor of {q1 - 1}.")
@@ -179,19 +180,19 @@ def main_isomorphism_check():
 if __name__ == "__main__":
     while True:
         print("\nSelect an option:")
-        print("1. Run hyperfield analysis and visualization")
+        print("1. Generate additive table for a specific hyperfield")
         print("2. Check isomorphism between two hyperfields")
-        print("3. Generate additive table for a specific hyperfield")
+        print("3. Run hyperfield analysis and visualization")
         print("4. Exit")
 
         choice = input("Enter your choice (1, 2, 3, or 4): ")
 
         if choice == '1':
-            run_analysis()
+            generate_and_display_table()
         elif choice == '2':
             main_isomorphism_check()
         elif choice == '3':
-            generate_and_display_table()
+            run_analysis()
         elif choice == '4':
             print("Exiting...")
             break
