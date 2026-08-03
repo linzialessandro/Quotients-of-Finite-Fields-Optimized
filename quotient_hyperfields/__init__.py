@@ -17,6 +17,11 @@ from quotient_hyperfields.isomorphism import (
     are_isomorphic,
     are_isomorphic_baker_jin,
     are_isomorphic_general,
+    baker_jin_bound,
+    baker_jin_bound_safe,
+    baker_jin_bound_sharp,
+    is_baker_jin_large,
+    weil_excess,
 )
 from quotient_hyperfields.census import (
     classify_hyperfields,
@@ -29,6 +34,11 @@ __all__ = [
     "are_isomorphic",
     "are_isomorphic_baker_jin",
     "are_isomorphic_general",
+    "baker_jin_bound",
+    "baker_jin_bound_safe",
+    "baker_jin_bound_sharp",
+    "is_baker_jin_large",
+    "weil_excess",
     "generate_triples",
     "classify_hyperfields",
 ]
