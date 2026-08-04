@@ -2,22 +2,22 @@
 
 Research-grade Python library for **Krasner quotient hyperfields** of the form
 
-\[
+$$
 K = \mathbb{F}_q / G_d,
-\]
+$$
 
-where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the index is \(r = (q-1)/d\), and \(|K| = r+1\).
+where $G_d \le \mathbb{F}_q^\times$ is the unique subgroup of order $d$, the index is $r = (q-1)/d$, and $|K| = r+1$.
 
 ## Features
 
-- Construct \(K\) from \((p,k,d)\), \((q,d)\), or \((q,r)\)
+- Construct $K$ from $(p,k,d)$, $(q,d)$, or $(q,r)$
 - Hyperaddition and full additive tables
 - **Layered isomorphism**
-  - **Baker–Jin** (Proc. AMS 2021, Thm 1.1) for large \(q\), with **Remark 1.2** bound \(N_r\) (sharp Weil threshold; not the coarser \(r^4\))
-  - **General** Aut\((C_r)\) check of \(1 \boxplus x\) tables (gold standard / sporadics)
+  - **Baker–Jin** (Proc. AMS 2021, Thm 1.1) for large $q$, with **Remark 1.2** bound $N_r$ (sharp Weil threshold; not the coarser $r^4$)
+  - **General** $\mathrm{Aut}(C_r)$ check of $1 \boxplus x$ tables (gold standard / sporadics)
   - **Auto** policy combining both
 - **Characteristic** and **C-characteristic** (Kędzierski–Linzi–Stojałowska)
-- Modest census: list triples and classify iso classes for fixed order \(n\)
+- Modest census: list triples and classify iso classes for fixed order $n$
 - Thin interactive CLI
 - Computational probes for Baker–Jin open questions (§5)
 - Char / C-char experiments (stable classes, gaps, parity theorem)
@@ -93,9 +93,9 @@ python -c "from quotient_hyperfields.papers_experiments import main; main()"
 
 | Track | Content | Primary paper |
 |------:|---------|---------------|
-| 1 | Stable (char, C-char) formula for large \(\mathbb{F}_q/G_r\) | Baker–Jin + Linzi |
-| 2 | Order-7 finite-field quotient atlas vs \(H_7=277\) | Massouros |
-| 3 | Ameri \(H_n\) vs \(Q^{\mathrm{fin}}\) for \(n\le 6\) | Ameri |
+| 1 | Stable (char, C-char) formula for large $\mathbb{F}_q/G_r$ | Baker–Jin + Linzi |
+| 2 | Order-7 finite-field quotient atlas vs $H_7=277$ | Massouros |
+| 3 | Ameri $H_n$ vs $Q^{\mathrm{fin}}$ for $n\le 6$ | Ameri |
 | 4 | Massouros Props 1–2 sum-cardinality checks | Massouros |
 | 5 | Linzi Prop.7 / Cor.1 / Prop.9 char bounds | Linzi et al. |
 
@@ -105,7 +105,7 @@ Module docs: `quotient_hyperfields/papers_experiments.py` (header map).
 
 | Paper | Role |
 |-------|------|
-| Baker–Jin, Proc. AMS 149 (2021) | Iso criterion for large finite-field quotients (Remark 1.2 \(N_r\); safe \(r^4\)) |
+| Baker–Jin, Proc. AMS 149 (2021) | Iso criterion for large finite-field quotients (Remark 1.2 $N_r$; safe $r^4$) |
 | Kędzierski–Linzi–Stojałowska, Mathematics 11 (2023) | Char / C-char definitions and motivation |
 | Ameri–Eyvazi–Hošková-Mayerová, AIMS Math. 5 (2020) | Enumeration order ≤ 6 |
 | Massouros–Massouros, AIMS Math. 10 (2025) | Full hyperfields of order 7 (277 classes) |
@@ -138,6 +138,6 @@ pytest -q
 
 ## Scope (v1)
 
-**In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char; empirical \(N_r\) / \(Q_r^{\mathrm{fin}}\) probes.
+**In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char; empirical $N_r$ / $Q_r^{\mathrm{fin}}$ probes.
 
 **Out of scope:** full enumeration of all finite hyperfields; GUIs; non-Python cores.
