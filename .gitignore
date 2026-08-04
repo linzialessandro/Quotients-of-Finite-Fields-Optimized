@@ -25,6 +25,12 @@ MANIFEST
 # Regenerable experiment reports (qh-open-questions)
 experiments_output/
 
+# Research manuscript (local / arXiv only — not in this public repo)
+paper/
+
+# Local reference PDFs (not published in this repo)
+papers/
+
 # Environment
 .env
 .venv
