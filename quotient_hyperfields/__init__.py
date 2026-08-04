@@ -28,6 +28,10 @@ from quotient_hyperfields.census import (
     generate_triples,
 )
 
+# experiments is intentionally not imported here so that
+# `python -m quotient_hyperfields.experiments` / the qh-open-questions
+# entry point can run cleanly without a double-import warning.
+
 __all__ = [
     "QuotientHyperfield",
     "IsoResult",

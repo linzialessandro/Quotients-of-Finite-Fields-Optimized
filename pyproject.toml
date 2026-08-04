@@ -23,6 +23,7 @@ dev = ["pytest>=7.0"]
 
 [project.scripts]
 quotient-hyperfields = "quotient_hyperfields.cli:main"
+qh-open-questions = "quotient_hyperfields.experiments:main"
 
 [tool.setuptools.packages.find]
 include = ["quotient_hyperfields*"]

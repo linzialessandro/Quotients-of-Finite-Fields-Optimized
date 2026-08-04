@@ -19,6 +19,7 @@ where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the
 - **Characteristic** and **C-characteristic** (Kędzierski–Linzi–Stojałowska)
 - Modest census: list triples and classify iso classes for fixed order \(n\)
 - Thin interactive CLI
+- Computational probes for Baker–Jin open questions (§5)
 
 ## Install
 
@@ -55,6 +56,19 @@ python -m quotient_hyperfields.cli
 python main.py
 ```
 
+### Baker–Jin open-question probes
+
+Heavy experiment helpers live in `quotient_hyperfields.experiments` and are **not**
+re-exported from the package root (avoids double-import warnings).
+
+```bash
+qh-open-questions
+# or
+python -c "from quotient_hyperfields.experiments import main; main()"
+```
+
+Reports are written under `experiments_output/` (gitignored; regenerate anytime).
+
 ## Mathematical references (in `papers/`)
 
 | Paper | Role |
@@ -71,6 +85,7 @@ quotient_hyperfields/   # installable package
   hyperfield.py         # QuotientHyperfield
   isomorphism.py        # Baker–Jin / general / auto
   census.py             # triples + classification
+  experiments.py        # open-question probes (Q3 / Q_r^fin)
   cli.py                # thin interactive UI
   visualization.py      # census plots
 tests/                  # paper-backed tests
@@ -86,6 +101,6 @@ pytest -q
 
 ## Scope (v1)
 
-**In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char.
+**In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char; empirical \(N_r\) / \(Q_r^{\mathrm{fin}}\) probes.
 
 **Out of scope:** full enumeration of all finite hyperfields; GUIs; non-Python cores.

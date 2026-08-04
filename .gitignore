@@ -22,6 +22,9 @@ wheels/
 MANIFEST
 .pytest_cache/
 
+# Regenerable experiment reports (qh-open-questions)
+experiments_output/
+
 # Environment
 .env
 .venv
