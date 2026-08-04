@@ -23,6 +23,8 @@ where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the
 ## Install
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
@@ -70,8 +72,10 @@ quotient_hyperfields/   # installable package
   isomorphism.py        # Baker–Jin / general / auto
   census.py             # triples + classification
   cli.py                # thin interactive UI
+  visualization.py      # census plots
 tests/                  # paper-backed tests
 papers/                 # reference PDFs
+main.py                 # CLI entry (compat)
 ```
 
 ## Tests
@@ -85,7 +89,3 @@ pytest -q
 **In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char.
 
 **Out of scope:** full enumeration of all finite hyperfields; GUIs; non-Python cores.
-
-## Legacy
-
-Older modules (`hyperfield_modules/`, root `utils.py`) are superseded by `quotient_hyperfields/`. Prefer the package API.
