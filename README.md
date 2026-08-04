@@ -21,6 +21,8 @@ where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the
 - Thin interactive CLI
 - Computational probes for Baker–Jin open questions (§5)
 - Char / C-char experiments (stable classes, gaps, parity theorem)
+- Paper-driven experiments (stable formula, order-7 atlas, Ameri comparison,
+  Massouros/Linzi criteria)
 
 ## Install
 
@@ -81,6 +83,24 @@ python -c "from quotient_hyperfields.invariants_experiments import main; main()"
 Runs experiments **A** (stable char/C-char by Baker–Jin class), **B** (gap census),
 and **D** (even order ⇒ char 2). Same `experiments_output/` directory.
 
+### Paper-driven experiments (tracks 1–5)
+
+```bash
+qh-papers
+# or
+python -c "from quotient_hyperfields.papers_experiments import main; main()"
+```
+
+| Track | Content | Primary paper |
+|------:|---------|---------------|
+| 1 | Stable (char, C-char) formula for large \(\mathbb{F}_q/G_r\) | Baker–Jin + Linzi |
+| 2 | Order-7 finite-field quotient atlas vs \(H_7=277\) | Massouros |
+| 3 | Ameri \(H_n\) vs \(Q^{\mathrm{fin}}\) for \(n\le 6\) | Ameri |
+| 4 | Massouros Props 1–2 sum-cardinality checks | Massouros |
+| 5 | Linzi Prop.7 / Cor.1 / Prop.9 char bounds | Linzi et al. |
+
+Module docs: `quotient_hyperfields/papers_experiments.py` (header map).
+
 ## Mathematical references (in `papers/`)
 
 | Paper | Role |
@@ -99,6 +119,10 @@ quotient_hyperfields/   # installable package
   census.py             # triples + classification
   experiments.py        # open-question probes (Q3 / Q_r^fin)
   invariants_experiments.py  # char / C-char experiments A/B/D
+  papers_experiments.py # paper tracks 1–5 (formula, atlas, criteria)
+  criteria.py           # Massouros / Linzi checks
+  atlas.py              # finite-field quotient class atlas
+  literature.py         # Ameri / Massouros reference counts
   cli.py                # thin interactive UI
   visualization.py      # census plots
 tests/                  # paper-backed tests

@@ -64,3 +64,22 @@ def gcd(a: int, b: int) -> int:
     while b:
         a, b = b, a % b
     return abs(a)
+
+
+def prime_factors(n: int) -> list[int]:
+    """Distinct prime factors of n (n >= 1)."""
+    if n < 1:
+        raise ValueError(f"n must be positive, got {n}")
+    if n == 1:
+        return []
+    factors: list[int] = []
+    d = 2
+    while d * d <= n:
+        if n % d == 0:
+            factors.append(d)
+            while n % d == 0:
+                n //= d
+        d += 1
+    if n > 1:
+        factors.append(n)
+    return factors
