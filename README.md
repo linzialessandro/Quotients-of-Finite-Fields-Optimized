@@ -20,6 +20,7 @@ where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the
 - Modest census: list triples and classify iso classes for fixed order \(n\)
 - Thin interactive CLI
 - Computational probes for Baker–Jin open questions (§5)
+- Char / C-char experiments (stable classes, gaps, parity theorem)
 
 ## Install
 
@@ -69,6 +70,17 @@ python -c "from quotient_hyperfields.experiments import main; main()"
 
 Reports are written under `experiments_output/` (gitignored; regenerate anytime).
 
+### Char / C-char invariant probes
+
+```bash
+qh-invariants
+# or
+python -c "from quotient_hyperfields.invariants_experiments import main; main()"
+```
+
+Runs experiments **A** (stable char/C-char by Baker–Jin class), **B** (gap census),
+and **D** (even order ⇒ char 2). Same `experiments_output/` directory.
+
 ## Mathematical references (in `papers/`)
 
 | Paper | Role |
@@ -86,6 +98,7 @@ quotient_hyperfields/   # installable package
   isomorphism.py        # Baker–Jin / general / auto
   census.py             # triples + classification
   experiments.py        # open-question probes (Q3 / Q_r^fin)
+  invariants_experiments.py  # char / C-char experiments A/B/D
   cli.py                # thin interactive UI
   visualization.py      # census plots
 tests/                  # paper-backed tests
