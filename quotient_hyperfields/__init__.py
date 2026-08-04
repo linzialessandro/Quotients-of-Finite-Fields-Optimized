@@ -7,8 +7,8 @@ The hyperfield has order r + 1.
 
 Primary references
 ------------------
-- Baker–Jin, arXiv:1912.11496 — isomorphism of large finite-field quotients
-- Kędzierski–Linzi–Stojałowska — characteristic and C-characteristic
+- Baker–Jin, Proc. Amer. Math. Soc. 149 (2021) — large finite-field quotients
+- Kędzierski–Linzi–Stojałowska, Mathematics 11 (2023) — char / C-char
 """
 
 from quotient_hyperfields.hyperfield import QuotientHyperfield

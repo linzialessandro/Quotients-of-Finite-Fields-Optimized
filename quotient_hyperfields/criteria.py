@@ -3,8 +3,9 @@ Paper criteria that finite-field quotient hyperfields must satisfy.
 
 References
 ----------
-- Massouros–Massouros, arXiv:2412.11331, Propositions 1–2
-  (sum cardinalities in a quotient F/Q).
+- Massouros–Massouros, AIMS Mathematics 10 (2025), 21287–21421,
+  Propositions on sum cardinalities in a quotient F/Q
+  (cf. DOI 10.3934/math.2025951).
 - Kędzierski–Linzi–Stojałowska, Mathematics 2023, Proposition 7,
   Lemma 3, Corollary 1 (characteristic bounds from |G|).
 

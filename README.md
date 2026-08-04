@@ -13,7 +13,7 @@ where \(G_d \le \mathbb{F}_q^\times\) is the unique subgroup of order \(d\), the
 - Construct \(K\) from \((p,k,d)\), \((q,d)\), or \((q,r)\)
 - Hyperaddition and full additive tables
 - **Layered isomorphism**
-  - **Baker–Jin** (arXiv:1912.11496, Thm 1.1) for large \(q\), with **Remark 1.2** bound \(N_r\) (sharp Weil threshold; not the coarser \(r^4\))
+  - **Baker–Jin** (Proc. AMS 2021, Thm 1.1) for large \(q\), with **Remark 1.2** bound \(N_r\) (sharp Weil threshold; not the coarser \(r^4\))
   - **General** Aut\((C_r)\) check of \(1 \boxplus x\) tables (gold standard / sporadics)
   - **Auto** policy combining both
 - **Characteristic** and **C-characteristic** (Kędzierski–Linzi–Stojałowska)
@@ -105,10 +105,10 @@ Module docs: `quotient_hyperfields/papers_experiments.py` (header map).
 
 | Paper | Role |
 |-------|------|
-| Baker–Jin, arXiv:1912.11496 | Iso criterion for large finite-field quotients (Remark 1.2 \(N_r\); safe \(r^4\) available) |
-| Kędzierski–Linzi–Stojałowska | Char / C-char definitions and motivation |
-| Ameri–Eyvazi–Hoskova | Enumeration order ≤ 6; iso via \(1+x\) |
-| Massouros, arXiv:2412.11331 | Full hyperfields of order 7; quotient examples |
+| Baker–Jin, Proc. AMS 149 (2021) | Iso criterion for large finite-field quotients (Remark 1.2 \(N_r\); safe \(r^4\)) |
+| Kędzierski–Linzi–Stojałowska, Mathematics 11 (2023) | Char / C-char definitions and motivation |
+| Ameri–Eyvazi–Hošková-Mayerová, AIMS Math. 5 (2020) | Enumeration order ≤ 6 |
+| Massouros–Massouros, AIMS Math. 10 (2025) | Full hyperfields of order 7 (277 classes) |
 
 ## Project layout
 

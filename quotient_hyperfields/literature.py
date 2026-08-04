@@ -5,10 +5,10 @@ Sources
 -------
 - Ameri–Eyvazi–Hoskova-Mayerova, AIMS Math. 2020, Table 1
   (enumeration of all finite hyperfields of order ≤ 6).
-- Baker–Jin, arXiv:1912.11496, Theorem 1.3
+- Baker–Jin, Proc. Amer. Math. Soc. 149 (2021), Theorem 1.3
   (which hyperfields of order ≤ 4 are quotients of fields).
-- Massouros–Massouros, arXiv:2412.11331
-  (277 hyperfields of order 7; explicit finite-field quotient examples).
+- Massouros–Massouros, AIMS Mathematics 10 (2025), 21287–21421
+  (DOI 10.3934/math.2025951; 277 hyperfields of order 7).
 
 These constants are used by :mod:`papers_experiments` for comparison tables.
 They are *not* recomputed here; they are literature inputs.

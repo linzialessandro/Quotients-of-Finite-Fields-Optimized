@@ -1,5 +1,5 @@
 """
-Computational probes for Baker–Jin open questions (arXiv:1912.11496, §5).
+Computational probes for Baker–Jin open questions (Proc. AMS 149 (2021), §5).
 
 Open questions (paraphrased)
 ----------------------------

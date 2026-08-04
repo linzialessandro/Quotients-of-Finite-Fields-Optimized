@@ -116,7 +116,7 @@ def test_self_isomorphic():
 
 def test_massouros_order7_z97_z157():
     """
-    Massouros (arXiv:2412.11331): Z_97/G ≅ Z_157/G for index-6 subgroups.
+    Massouros–Massouros (AIMS Math. 2025): Z_97/G ≅ Z_157/G for index-6 subgroups.
     r=6, N_6 (Remark 1.2) is still > 157, so general path applies.
     """
     n6 = baker_jin_bound_sharp(6)

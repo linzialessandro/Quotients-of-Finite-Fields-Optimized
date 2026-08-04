@@ -3,7 +3,7 @@ Isomorphism of finite-field quotient hyperfields.
 
 Layers
 ------
-1. Baker–Jin (Theorem 1.1, arXiv:1912.11496) — O(1) for q >= N_r
+1. Baker–Jin (Theorem 1.1, Proc. AMS 149 (2021)) — O(1) for q >= N_r
    Default N_r is the sharp Remark 1.2 Weil bound (not the coarser r^4).
 2. General — Aut(C_r) search matching 1 ⊞ x tables (gold standard / sporadics)
 3. Policy wrapper — Baker–Jin when applicable, else general

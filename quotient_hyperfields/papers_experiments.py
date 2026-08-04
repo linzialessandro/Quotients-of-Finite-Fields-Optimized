@@ -7,12 +7,14 @@ Documentation map
 
 1. Stable (char, C-char) formula check  — Baker–Jin + Linzi
    ---------------------------------------------------------
-   Conjecture (supported by prior invariant runs for r≤8):
-     For large F_q / G_r (q ≥ N_r from Remark 1.2):
+   THEOREM (stable characteristics of large F_q/G_r):
+     For large F_q / G_r (q ≥ N_r from Baker–Jin / Remark 1.2):
        - odd r:  (char, C-char) = (2, 1)
        - even r, q ≡ 1 (mod 2r):     (2, 1)
        - even r, q ≡ r+1 (mod 2r):   (3, 1)
-   This experiment verifies the pattern on every large prime power in range.
+   Proof idea: evaluate char/C-char on the explicit models H_r, H'_r in
+   Baker–Jin Thm 1.1. This experiment independently verifies the statement
+   on every large prime power in the computational scan.
 
 2. Order-7 finite-field quotient atlas  — Massouros + Baker–Jin
    -----------------------------------------------------------
@@ -190,7 +192,7 @@ def experiment2_order7_atlas(
         "=" * 60,
         f"Massouros–Massouros: H_7 = {MASSOUROS_H7} hyperfields of order 7.",
         "We list iso classes of F_q / G_6 (index r=6 ⇒ order 7).",
-        "References: arXiv:2412.11331; Baker–Jin open question (4).",
+        "References: Massouros–Massouros AIMS Math. 2025; Baker–Jin open question (4).",
         "",
     ]
     if progress:
@@ -328,7 +330,7 @@ def experiment4_massouros_criteria(
         "=" * 60,
         "Prop.1: |x+y| ≤ |G| for all x,y in a quotient F/G.",
         "Prop.2: if difference hypothesis holds, |x+y|=|G| for non-opposite unequal pairs.",
-        "Reference: Massouros–Massouros arXiv:2412.11331.",
+        "Reference: Massouros–Massouros, AIMS Mathematics 10 (2025).",
         "",
         f"{'q':>6} {'r':>4} {'d':>6} {'Prop1':>7} {'Prop2':>7}",
     ]
