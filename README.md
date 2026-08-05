@@ -173,3 +173,13 @@ pytest -q
 **In scope:** finite-field quotient hyperfields only; laptop-scale experiments; certified iso; char/C-char; empirical $N_r$ / $Q_r^{\mathrm{fin}}$ probes.
 
 **Out of scope:** full enumeration of all finite hyperfields; GUIs; non-Python cores.
+
+## AI use disclosure
+
+Development of this repository was assisted by **Grok Build CLI** with the model **Grok 4.5** (xAI), primarily for software engineering: implementation, tests, packaging, documentation, and repository maintenance.
+
+- Generative AI tools are **not** authors of the companion paper or of this software.
+- Mathematical claims, proofs, experimental design, numerical tables, and released code were reviewed and verified by the human author (**Alessandro Linzi**), who remains solely responsible for correctness and for any errors.
+- The peer-facing disclosure also appears in the **Acknowledgements** of [arXiv:2608.03625](https://arxiv.org/abs/2608.03625).
+
+This wording follows common academic practice (name the tool and model; state the role; affirm human responsibility; do not list AI as an author).
