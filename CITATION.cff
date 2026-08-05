@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite the companion paper."
+title: "quotient-hyperfields"
+version: "0.1.0"
+date-released: "2026-08-04"
+type: software
+authors:
+  - family-names: Linzi
+    given-names: Alessandro
+    email: alessandro.linzi.phd@icloud.com
+repository-code: "https://github.com/linzialessandro/Quotients-of-Finite-Fields-Optimized"
+url: "https://arxiv.org/abs/2608.03625"
+abstract: >-
+  Research library for Krasner quotient hyperfields of finite fields F_q / G_d:
+  construction, layered isomorphism (Baker–Jin / general), char and C-char,
+  censuses, and paper-driven experiments accompanying arXiv:2608.03625.
+keywords:
+  - hyperfield
+  - finite fields
+  - Krasner
+  - isomorphism
+  - characteristic
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Linzi
+      given-names: Alessandro
+  title: "Finite-field Krasner quotients: isomorphism thresholds, characteristics, and censuses"
+  year: 2026
+  doi: "10.48550/arXiv.2608.03625"
+  url: "https://arxiv.org/abs/2608.03625"
+  identifiers:
+    - type: arxiv
+      value: "2608.03625"
+    - type: other
+      value: "arXiv:2608.03625"
+      description: arXiv identifier
+  journal: "arXiv preprint"
+  notes: "math.RA"

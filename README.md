@@ -1,5 +1,9 @@
 # Quotient Hyperfields of Finite Fields
 
+[![arXiv](https://img.shields.io/badge/arXiv-2608.03625-b31b1b.svg)](https://arxiv.org/abs/2608.03625)
+[![DOI](https://img.shields.io/badge/DOI-10.48550/arXiv.2608.03625-blue.svg)](https://doi.org/10.48550/arXiv.2608.03625)
+[![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/linzialessandro/Quotients-of-Finite-Fields-Optimized/releases/tag/v0.1.0)
+
 Research-grade Python library for **Krasner quotient hyperfields** of the form
 
 $$
@@ -7,6 +11,34 @@ K = \mathbb{F}_q / G_d,
 $$
 
 where $G_d \le \mathbb{F}_q^\times$ is the unique subgroup of order $d$, the index is $r = (q-1)/d$, and $|K| = r+1$.
+
+## Paper
+
+Companion software for:
+
+> Alessandro Linzi, *Finite-field Krasner quotients: isomorphism thresholds, characteristics, and censuses*, arXiv:[2608.03625](https://arxiv.org/abs/2608.03625) [math.RA], 2026.
+
+- Abstract: https://arxiv.org/abs/2608.03625  
+- PDF: https://arxiv.org/pdf/2608.03625  
+- arXiv DOI: https://doi.org/10.48550/arXiv.2608.03625  
+- Ancillary CSV tables on arXiv (same id) under **Ancillary files**  
+- This repository is the living code; **v0.1.0** is the release used for the paper tables
+
+To cite the paper and/or this software, see [`CITATION.cff`](CITATION.cff) or:
+
+```bibtex
+@misc{linzi2026quotients,
+  title         = {Finite-field {K}rasner quotients: isomorphism thresholds,
+                   characteristics, and censuses},
+  author        = {Linzi, Alessandro},
+  year          = {2026},
+  eprint        = {2608.03625},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.RA},
+  doi           = {10.48550/arXiv.2608.03625},
+  url           = {https://arxiv.org/abs/2608.03625}
+}
+```
 
 ## Features
 
