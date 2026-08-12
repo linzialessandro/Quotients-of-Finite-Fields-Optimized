@@ -1,0 +1,11 @@
+r,order,Q_fin,complete,beyond_paper
+1,2,2,False,False
+2,3,4,True,False
+3,4,4,True,False
+4,5,9,True,False
+5,6,7,True,False
+6,7,15,True,False
+7,8,9,True,True
+8,9,17,True,True
+9,10,14,True,True
+10,11,27,True,True

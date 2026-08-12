@@ -10,6 +10,12 @@ Sources
 - Massouros–Massouros, AIMS Mathematics 10 (2025), 21287–21421
   (DOI 10.3934/math.2025951; 277 hyperfields of order 7).
 
+Implementation note (not a numerical source)
+--------------------------------------------
+- Talotti, *Hyperstructures in computer science* (2025): bitstring encodings of
+  finite magmata; see :mod:`quotient_hyperfields.bitsets` and local PDF
+  ``papers/hyperstructure_comp_science.pdf``.
+
 These constants are used by :mod:`papers_experiments` for comparison tables.
 They are *not* recomputed here; they are literature inputs.
 """

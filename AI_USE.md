@@ -28,4 +28,4 @@ Assistance covered **software engineering and research-engineering** tasks, incl
 
 ## Human responsibility
 
-**Alessandro Linzi** designed the research program, owns all scientific claims, verified proofs and computational outputs against the intended mathematics and the literature, and takes full responsibility for the published paper, the software release (e.g. v0.1.0), and any errors.
+**Alessandro Linzi** designed the research program, owns all scientific claims, verified proofs and computational outputs against the intended mathematics and the literature, and takes full responsibility for the published paper, the software releases (e.g. v0.1.0 for arXiv tables; v0.2.0 performance work), and any errors.

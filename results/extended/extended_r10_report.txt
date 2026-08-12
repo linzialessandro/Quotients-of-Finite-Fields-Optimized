@@ -1,0 +1,186 @@
+Generated (UTC): 20260812T103401Z
+software: quotient-hyperfields extended suite (v0.2+ path)
+r_max=10 max_q_cap=12000 n_atlas_max=11 atlas=True
+wall_seconds=496.8
+
+N_r sharpness summary (extended range)
+============================================================
+  r    N_emp    N_1.2  emp/1.2      r^4  #exc   max_q
+  2        6        6    1.000       16     2      56
+  3       17       17    1.000       81     4      67
+  4       42       56    0.750      256     7     106
+  5      102      171    0.596      625     7     257
+  6      278      434    0.641     1296    18     652
+  7      492      940    0.523     2401     8    1411
+  8      762     1810    0.421     4096    18    2716
+  9      578     3188    0.181     6561    15    4783
+ 10     1182     5242    0.225    10000    27    7864
+
+Note: emp/1.2 < 1 means Remark 1.2 is not sharp on this scan (empirical threshold below the Weil bound).
+
+Baker–Jin open question (3): true growth of N_r (detail)
+============================================================
+r = 2
+  Remark 1.2 N_r     = 6
+  Safe r^4 N_r       = 16
+  Paper lower bound  = None
+  Empirical N_r      = 6
+  # prime powers ≤ 56 with r | (q-1): 19
+  # exceptions (non-stable fps): 2
+  verified up to     = 56
+  exception qs       = q=3(even_1), q=5(even_0)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 6 is sharp or nearly sharp on this scan (empirical 6)
+
+r = 3
+  Remark 1.2 N_r     = 17
+  Safe r^4 N_r       = 81
+  Paper lower bound  = 5
+  Empirical N_r      = 17
+  # prime powers ≤ 67 with r | (q-1): 13
+  # exceptions (non-stable fps): 4
+  verified up to     = 67
+  exception qs       = q=4(odd), q=7(odd), q=13(odd), q=16(odd)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 17 is sharp or nearly sharp on this scan (empirical 17)
+
+r = 4
+  Remark 1.2 N_r     = 56
+  Safe r^4 N_r       = 256
+  Paper lower bound  = 10
+  Empirical N_r      = 42
+  # prime powers ≤ 106 with r | (q-1): 16
+  # exceptions (non-stable fps): 7
+  verified up to     = 106
+  exception qs       = q=5(even_1), q=9(even_0), q=13(even_1), q=17(even_0), q=25(even_0), q=29(even_1), q=41(even_0)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 56 is not sharp on this scan (empirical 42 < 56)
+
+r = 5
+  Remark 1.2 N_r     = 171
+  Safe r^4 N_r       = 625
+  Paper lower bound  = None
+  Empirical N_r      = 102
+  # prime powers ≤ 257 with r | (q-1): 17
+  # exceptions (non-stable fps): 7
+  verified up to     = 257
+  exception qs       = q=11(odd), q=16(odd), q=31(odd), q=41(odd), q=61(odd), q=71(odd), q=101(odd)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 171 is not sharp on this scan (empirical 102 < 171)
+
+r = 6
+  Remark 1.2 N_r     = 434
+  Safe r^4 N_r       = 1296
+  Paper lower bound  = 26
+  Empirical N_r      = 278
+  # prime powers ≤ 652 with r | (q-1): 65
+  # exceptions (non-stable fps): 18
+  verified up to     = 652
+  exception qs       = q=7(even_1), q=13(even_0), q=19(even_1), q=25(even_0), q=31(even_1), q=37(even_0), q=43(even_1), q=49(even_0), q=61(even_0), q=67(even_1), q=73(even_0), q=79(even_1), ...
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 434 is not sharp on this scan (empirical 278 < 434)
+
+r = 7
+  Remark 1.2 N_r     = 940
+  Safe r^4 N_r       = 2401
+  Paper lower bound  = None
+  Empirical N_r      = 492
+  # prime powers ≤ 1411 with r | (q-1): 42
+  # exceptions (non-stable fps): 8
+  verified up to     = 1411
+  exception qs       = q=8(odd), q=29(odd), q=43(odd), q=64(odd), q=71(odd), q=113(odd), q=127(odd), q=491(odd)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 940 is not sharp on this scan (empirical 492 < 940)
+
+r = 8
+  Remark 1.2 N_r     = 1810
+  Safe r^4 N_r       = 4096
+  Paper lower bound  = 50
+  Empirical N_r      = 762
+  # prime powers ≤ 2716 with r | (q-1): 110
+  # exceptions (non-stable fps): 18
+  verified up to     = 2716
+  exception qs       = q=9(even_1), q=17(even_0), q=25(even_1), q=41(even_1), q=49(even_0), q=73(even_1), q=81(even_0), q=89(even_1), q=97(even_0), q=113(even_0), q=121(even_1), q=137(even_1), ...
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 1810 is not sharp on this scan (empirical 762 < 1810)
+
+r = 9
+  Remark 1.2 N_r     = 3188
+  Safe r^4 N_r       = 6561
+  Paper lower bound  = None
+  Empirical N_r      = 578
+  # prime powers ≤ 4783 with r | (q-1): 111
+  # exceptions (non-stable fps): 15
+  verified up to     = 4783
+  exception qs       = q=19(odd), q=37(odd), q=64(odd), q=73(odd), q=109(odd), q=127(odd), q=163(odd), q=181(odd), q=199(odd), q=271(odd), q=307(odd), q=343(odd), ...
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 3188 is not sharp on this scan (empirical 578 < 3188)
+
+r = 10
+  Remark 1.2 N_r     = 5242
+  Safe r^4 N_r       = 10000
+  Paper lower bound  = None
+  Empirical N_r      = 1182
+  # prime powers ≤ 7864 with r | (q-1): 257
+  # exceptions (non-stable fps): 27
+  verified up to     = 7864
+  exception qs       = q=11(even_1), q=31(even_1), q=41(even_0), q=61(even_0), q=71(even_1), q=81(even_0), q=101(even_0), q=121(even_0), q=131(even_1), q=151(even_1), q=181(even_0), q=191(even_1), ...
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 5242 is not sharp on this scan (empirical 1182 < 5242)
+
+
+Baker–Jin open question (4): Q_r among finite-field quotients
+============================================================
+Q_r^{fin} = # iso classes of F_q/G of order r+1.
+Paper Q_r also counts infinite-field quotients; Q_r^{fin} <= Q_r.
+H_r (all hyperfields) requires full enumeration — not computed here.
+
+  r  order  Q_r^fin   N_r(1.2)   max_q  complete
+  1      2        2          0      64     False
+  2      3        4          6      56      True
+  3      4        4         17      67      True
+  4      5        9         56     106      True
+  5      6        7        171     257      True
+  6      7       15        434     652      True
+  7      8        9        940    1411      True
+  8      9       17       1810    2716      True
+  9     10       14       3188    4783      True
+ 10     11       27       5242    7864      True
+
+Extended finite-field quotient atlases
+============================================================
+Orders n=2..11, max_q_cap=12000.
+Q_fin = # iso classes among F_q/G_{n-1}; H from literature when known.
+
+  n   r  Q_fin   H_lit    ratio  complete   N_r(1.2)   max_q
+  2   1      2       2   1.0000      True          0      64  (0.1s)
+  3   2      4       5   0.8000      True          6      56  (0.0s)
+  4   3      4       7   0.5714      True         17      67  (0.0s)
+  5   4      9      27   0.3333      True         56     106  (0.0s)
+  6   5      7      16   0.4375      True        171     257  (0.1s)
+  7   6     15     277   0.0542      True        434     652  (1.0s)
+  8   7      9       —        —      True        940    1411  (3.3s)
+  9   8     17       —        —      True       1810    2716  (22.8s)
+ 10   9     14       —        —      True       3188    4783  (27.4s)
+ 11  10     27       —        —      True       5242    7864  (106.5s)
+
+EXPERIMENT 1 — Stable (char, C-char) formula
+============================================================
+Conjecture: for q ≥ N_r (Remark 1.2),
+  odd r              → (char, C-char) = (2, 1)
+  even r, q≡1(2r)    → (2, 1)
+  even r, q≡r+1(2r)  → (3, 1)
+References: Baker–Jin Thm 1.1 (class structure); Linzi et al. (invariants).
+
+  r  #large    ok  fail   status
+  2      17    17     0     PASS
+  3       9     9     0     PASS
+  4       6     6     0     PASS
+  5       6     6     0     PASS
+  6      18    18     0     PASS
+  7      10    10     0     PASS
+  8      31    31     0     PASS
+  9      29    29     0     PASS
+ 10      76    76     0     PASS
+
+Overall: formula holds on all tested large quotients.

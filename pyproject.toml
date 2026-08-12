@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quotient-hyperfields"
-version = "0.1.0"
+version = "0.2.0"
 description = "Research library for Krasner quotient hyperfields of finite fields F_q / G_d"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -43,6 +43,7 @@ quotient-hyperfields = "quotient_hyperfields.cli:main"
 qh-open-questions = "quotient_hyperfields.experiments:main"
 qh-invariants = "quotient_hyperfields.invariants_experiments:main"
 qh-papers = "quotient_hyperfields.papers_experiments:main"
+qh-extended = "quotient_hyperfields.extended_experiments:main"
 
 [tool.setuptools.packages.find]
 include = ["quotient_hyperfields*"]

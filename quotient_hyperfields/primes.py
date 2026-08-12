@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from functools import lru_cache
 
 
 def is_prime(n: int) -> bool:
@@ -83,3 +84,24 @@ def prime_factors(n: int) -> list[int]:
     if n > 1:
         factors.append(n)
     return factors
+
+
+@lru_cache(maxsize=None)
+def primitive_root_mod_p(p: int) -> int:
+    """
+    Smallest primitive root modulo a prime p.
+
+    Used by the prime-field backend of :class:`QuotientHyperfield` to avoid
+    constructing a ``galois`` field for every prime order.
+    """
+    if not is_prime(p):
+        raise ValueError(f"p must be prime, got {p}")
+    if p == 2:
+        return 1
+    if p == 3:
+        return 2
+    factors = prime_factors(p - 1)
+    for g in range(2, p):
+        if all(pow(g, (p - 1) // q, p) != 1 for q in factors):
+            return g
+    raise RuntimeError(f"no primitive root found modulo {p}")

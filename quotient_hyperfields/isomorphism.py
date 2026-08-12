@@ -227,10 +227,14 @@ def are_isomorphic_general(
     if r == 0:
         return IsoResult(True, "general", "trivial r=0")
 
-    # Precompute 1 ⊞ x tables for both (labels in {-1} ∪ Z/rZ)
+    # Precompute 1 ⊞ x tables for both (labels in {-1} ∪ Z/rZ).
+    # Bitmask form (Talotti-style) for O(1) equality when comparing images.
+    from quotient_hyperfields.bitsets import labels_to_mask
+
     domain = [ZERO] + list(range(r))
     table_a = {x: a.one_plus(x) for x in domain}
     table_b = {x: b.one_plus(x) for x in domain}
+    mask_b = {x: labels_to_mask(table_b[x]) for x in domain}
 
     # Try all automorphisms of C_r
     for k in range(r):
@@ -246,9 +250,8 @@ def are_isomorphic_general(
 
         ok = True
         for x in domain:
-            left = frozenset(phi(y) for y in table_a[x])
-            right = table_b[phi(x)]
-            if left != right:
+            left_mask = labels_to_mask(phi(y) for y in table_a[x])
+            if left_mask != mask_b[phi(x)]:
                 ok = False
                 break
         if ok:

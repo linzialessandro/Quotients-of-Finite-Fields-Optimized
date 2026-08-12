@@ -118,11 +118,16 @@ def build_order_atlas(
     qs = prime_powers_with_index(r, limit)
     # fingerprint -> aggregation
     buckets: dict[tuple, dict] = {}
+    stable_cache: dict[tuple[int, str], tuple] = {}
     for i, q in enumerate(qs):
         if progress:
             print(f"  [atlas n={order}] {i + 1}/{len(qs)} q={q}", flush=True)
         h = QuotientHyperfield.from_q_r(q, r)
-        fp = structure_fingerprint(h)
+        # Large-q fingerprints reuse one Aut-canonical table per Baker–Jin
+        # residue (same classes as full computation; v0.2 scan optimisation).
+        fp = structure_fingerprint(
+            h, use_stable=True, _stable_cache=stable_cache
+        )
         if fp not in buckets:
             buckets[fp] = {
                 "qs": [],

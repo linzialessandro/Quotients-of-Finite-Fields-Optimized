@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from quotient_hyperfields.experiments import structure_fingerprint
 from quotient_hyperfields.hyperfield import QuotientHyperfield
 from quotient_hyperfields.isomorphism import are_isomorphic
 from quotient_hyperfields.primes import is_prime
@@ -37,13 +38,34 @@ def classify_hyperfields(
 ) -> list[list[tuple[int, int, int]]]:
     """
     Partition triples of hyperfield order n into isomorphism classes.
+
+    Default path (``method="auto"`` or ``"fingerprint"``) buckets by the
+    Aut-canonical structure fingerprint — the same invariant used by the
+    atlas / paper tables — in linear time in the number of triples.
+
+    Pass ``method="general"`` or ``"baker_jin"`` to force pairwise
+    :func:`~quotient_hyperfields.isomorphism.are_isomorphic` (legacy O(m²)
+    path; useful for cross-checks).
     """
     triples = generate_triples(n, max_p, max_k)
     if not triples:
         return []
 
-    # Build once
     objects = [QuotientHyperfield.from_params(p, k, d) for p, k, d in triples]
+
+    if method in ("auto", "fingerprint"):
+        buckets: dict[tuple, list[tuple[int, int, int]]] = {}
+        # Preserve first-seen order of classes (min sample order by first triple)
+        order_keys: list[tuple] = []
+        for trip, h in zip(triples, objects):
+            fp = structure_fingerprint(h)
+            if fp not in buckets:
+                buckets[fp] = []
+                order_keys.append(fp)
+            buckets[fp].append(trip)
+        return [buckets[k] for k in order_keys]
+
+    # Legacy pairwise classification
     assigned = [False] * len(triples)
     classes: list[list[tuple[int, int, int]]] = []
 

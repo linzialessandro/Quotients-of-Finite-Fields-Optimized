@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or its results, please cite the companion paper."
 title: "quotient-hyperfields"
-version: "0.1.0"
-date-released: "2026-08-04"
+version: "0.2.0"
+date-released: "2026-08-12"
 type: software
 authors:
   - family-names: Linzi
@@ -14,6 +14,8 @@ abstract: >-
   Research library for Krasner quotient hyperfields of finite fields F_q / G_d:
   construction, layered isomorphism (Baker–Jin / general), char and C-char,
   censuses, and paper-driven experiments accompanying arXiv:2608.03625.
+  Version 0.2.0 speeds up prime-field arithmetic and large-q scans without
+  changing the mathematical algorithms of the companion paper.
 keywords:
   - hyperfield
   - finite fields

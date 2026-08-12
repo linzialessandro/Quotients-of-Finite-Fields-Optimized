@@ -76,14 +76,45 @@ def prime_powers_with_index(r: int, limit: int) -> list[int]:
 # ---------------------------------------------------------------------------
 
 
-def structure_fingerprint(h: QuotientHyperfield) -> tuple:
+def structure_fingerprint(
+    h: QuotientHyperfield,
+    *,
+    use_stable: bool = False,
+    _stable_cache: dict[tuple[int, str], tuple] | None = None,
+) -> tuple:
     """
     Isomorphism invariant for finite-field quotients of fixed r.
 
     Canonical form of the multiset of 1⊞x sets under Aut(C_r): choose the
     lexicographically minimal encoding among multipliers k coprime to r.
+
+    Parameters
+    ----------
+    use_stable :
+        If True and ``q`` is in the Baker–Jin large regime, reuse a previously
+        computed stable fingerprint for the same ``(r, residue)`` when
+        ``_stable_cache`` is provided (or compute once and store there).
+        The value is still the Aut-canonical table of a large witness of that
+        residue — not a synthetic model — so iso classes are unchanged.
+    _stable_cache :
+        Optional map ``(r, residue) -> fingerprint`` shared across a scan.
+        Used by atlases / empirical ``N_r`` probes to avoid recomputing
+        ``1 ⊞ x`` tables for every large prime power.
     """
+    # Per-object memo (full Aut computation)
+    if h._fingerprint_cache is not None and not use_stable:
+        return h._fingerprint_cache
+
     r = h.r
+    if use_stable and r >= 2 and is_baker_jin_large(h.q, r):
+        res = baker_jin_residue(h.q, r)
+        key = (r, res)
+        if _stable_cache is not None and key in _stable_cache:
+            fp = _stable_cache[key]
+            h._fingerprint_cache = fp
+            return fp
+        # Fall through to compute once from this large witness, then store.
+
     domain = [ZERO] + list(range(r))
     raw = {x: h.one_plus(x) for x in domain}
 
@@ -103,10 +134,17 @@ def structure_fingerprint(h: QuotientHyperfield) -> tuple:
         return tuple(rows)
 
     if r == 1:
-        return encode(0)
+        fp = encode(0)
+    else:
+        candidates = [encode(k) for k in range(r) if gcd(k, r) == 1]
+        fp = min(candidates)
 
-    candidates = [encode(k) for k in range(r) if gcd(k, r) == 1]
-    return min(candidates)
+    h._fingerprint_cache = fp
+
+    if use_stable and r >= 2 and is_baker_jin_large(h.q, r) and _stable_cache is not None:
+        _stable_cache[(r, baker_jin_residue(h.q, r))] = fp
+
+    return fp
 
 
 def baker_jin_residue(q: int, r: int) -> str:
@@ -269,11 +307,14 @@ def empirical_nr(
         )
 
     fps: dict[int, tuple] = {}
+    stable_cache: dict[tuple[int, str], tuple] = {}
     for i, q in enumerate(qs):
         if progress:
             print(f"  [r={r}] fingerprint {i + 1}/{len(qs)} q={q}", flush=True)
         h = QuotientHyperfield.from_q_r(q, r)
-        fps[q] = structure_fingerprint(h)
+        fps[q] = structure_fingerprint(
+            h, use_stable=True, _stable_cache=stable_cache
+        )
 
     by_res: dict[str, list[int]] = {}
     for q in qs:
@@ -447,9 +488,14 @@ def count_finite_quotient_classes(
 
     qs = prime_powers_with_index(r, max_q)
     fps = []
+    stable_cache: dict[tuple[int, str], tuple] = {}
     for q in qs:
         h = QuotientHyperfield.from_q_r(q, r)
-        fps.append(structure_fingerprint(h))
+        fps.append(
+            structure_fingerprint(
+                h, use_stable=True, _stable_cache=stable_cache
+            )
+        )
 
     # Count unique fingerprints
     unique = set(fps)

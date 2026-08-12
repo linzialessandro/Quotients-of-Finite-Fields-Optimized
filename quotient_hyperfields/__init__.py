@@ -9,6 +9,9 @@ Primary references
 ------------------
 - Baker–Jin, Proc. Amer. Math. Soc. 149 (2021) — large finite-field quotients
 - Kędzierski–Linzi–Stojałowska, Mathematics 11 (2023) — char / C-char
+- Linzi, arXiv:2608.03625 (2026) — companion paper (stable char, censuses)
+- Talotti (2025) — bitstring encodings of finite magmata (implementation idea
+  for table cells; see :mod:`quotient_hyperfields.bitsets`)
 """
 
 from quotient_hyperfields.hyperfield import QuotientHyperfield
@@ -47,4 +50,4 @@ __all__ = [
     "classify_hyperfields",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
