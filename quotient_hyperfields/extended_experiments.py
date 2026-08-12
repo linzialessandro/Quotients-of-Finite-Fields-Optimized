@@ -16,9 +16,12 @@ exploration that the speedup was meant to enable.
 
 Environment
 -----------
+  QH_R_MIN         min index r for N_r / Q_fin / formula (default 2; r=1 still
+                   included in Q_fin only when min≤1)
   QH_R_MAX         max index r (default 12)
   QH_MAX_Q_CAP     scan cap (default 15000)
   QH_N_ATLAS_MAX   max hyperfield order for atlases (default r_max+1)
+  QH_N_ATLAS_MIN   min hyperfield order for atlases (default 2)
   QH_DO_ATLAS      0/1 (default 1)
   QH_OUT_DIR       output directory (default experiments_output)
 
@@ -143,20 +146,23 @@ def report_qfin_table(
     r_max: int,
     max_q_cap: int,
     *,
+    r_min: int = 1,
     progress: bool = True,
 ) -> tuple[str, list[dict]]:
     """Q_r^{fin} table + CSV rows (new content for r>8 / order>7)."""
+    r_lo = max(1, r_min)
     lines = [
         "Baker–Jin open question (4): Q_r^{fin} (finite-field quotients)",
         "=" * 60,
         "Q_r^{fin} = # iso classes of F_q/G of order r+1.",
         "NEW: rows with r>8 (order>9) are beyond the arXiv census.",
+        f"Range: r={r_lo}..{r_max}.",
         "",
         f"{'r':>3} {'order':>6} {'Q_r^fin':>8} {'N_r(1.2)':>10} "
         f"{'max_q':>7} {'complete':>9}",
     ]
     csv_rows: list[dict] = []
-    for r in range(1, r_max + 1):
+    for r in range(r_lo, r_max + 1):
         if r >= 2:
             limit = resolve_scan_limit(r, max_q_cap=max_q_cap)
         else:
@@ -189,13 +195,15 @@ def report_extended_atlases(
     n_max: int = 13,
     max_q_cap: int = 15000,
     *,
+    n_min: int = 2,
     progress: bool = True,
 ) -> tuple[str, list[dict]]:
-    """Finite-field Q^{fin} atlases for orders 2..n_max."""
+    """Finite-field Q^{fin} atlases for orders n_min..n_max."""
+    n_lo = max(2, n_min)
     lines = [
         "Extended finite-field quotient atlases",
         "=" * 60,
-        f"Orders n=2..{n_max}, max_q_cap={max_q_cap}.",
+        f"Orders n={n_lo}..{n_max}, max_q_cap={max_q_cap}.",
         "For n≥8 there is no published H_n in our literature table —",
         "these Q_fin values are new computational census data.",
         "",
@@ -203,7 +211,7 @@ def report_extended_atlases(
         f"{'complete':>9} {'N_r(1.2)':>10} {'max_q':>7}",
     ]
     csv_rows: list[dict] = []
-    for n in range(2, n_max + 1):
+    for n in range(n_lo, n_max + 1):
         r = n - 1
         if progress:
             print(f"=== atlas n={n} (r={r}) ===", flush=True)
@@ -256,18 +264,24 @@ def report_extended_atlases(
 
 
 def main() -> None:
+    r_min = int(os.environ.get("QH_R_MIN", "2"))
     r_max = int(os.environ.get("QH_R_MAX", "12"))
+    if r_min > r_max:
+        raise ValueError(f"QH_R_MIN={r_min} > QH_R_MAX={r_max}")
     max_q_cap = int(os.environ.get("QH_MAX_Q_CAP", "15000"))
     n_atlas = int(os.environ.get("QH_N_ATLAS_MAX", str(r_max + 1)))
+    n_atlas_min = int(os.environ.get("QH_N_ATLAS_MIN", "2"))
     do_atlas = os.environ.get("QH_DO_ATLAS", "1") not in ("0", "false", "False")
     out_dir = Path(os.environ.get("QH_OUT_DIR", "experiments_output"))
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # N_r / formula need r >= 2
+    nr_lo = max(2, r_min)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     partial_path = out_dir / f"extended_partial_{stamp}.txt"
     print(
-        f"Extended experiments: r_max={r_max}, max_q_cap={max_q_cap}, "
-        f"n_atlas≤{n_atlas}, atlas={do_atlas}",
+        f"Extended experiments: r={r_min}..{r_max}, max_q_cap={max_q_cap}, "
+        f"atlas n={n_atlas_min}..{n_atlas}, atlas={do_atlas}",
         flush=True,
     )
     print(f"Checkpoints → {out_dir} (stamp {stamp})", flush=True)
@@ -277,8 +291,8 @@ def main() -> None:
     header = (
         f"Generated (UTC): {stamp}\n"
         f"software: quotient-hyperfields extended suite (v0.2+)\n"
-        f"r_max={r_max} max_q_cap={max_q_cap} n_atlas_max={n_atlas} "
-        f"atlas={do_atlas}\n"
+        f"r_min={r_min} r_max={r_max} max_q_cap={max_q_cap} "
+        f"n_atlas={n_atlas_min}..{n_atlas} atlas={do_atlas}\n"
         "Goal: new data beyond arXiv:2608.03625 tables (r≤8, n≤7).\n"
     )
 
@@ -289,10 +303,10 @@ def main() -> None:
         print(f"  [checkpoint] {partial_path}", flush=True)
 
     # ---- Phase 1: N_r (single pass) ----
-    print("\n[1/4] Empirical N_r (single pass) …", flush=True)
+    print(f"\n[1/4] Empirical N_r for r={nr_lo}..{r_max} …", flush=True)
     t0 = time.perf_counter()
     nr_rows = scan_empirical_nr(
-        range(2, r_max + 1), max_q_cap=max_q_cap, progress=True
+        range(nr_lo, r_max + 1), max_q_cap=max_q_cap, progress=True
     )
     parts.append(format_nr_sharpness(nr_rows))
     parts.append("")
@@ -302,10 +316,10 @@ def main() -> None:
     checkpoint()
 
     # ---- Phase 2: Q_r^{fin} ----
-    print("\n[2/4] Q_r^{fin} …", flush=True)
+    print(f"\n[2/4] Q_r^{{fin}} for r={r_min}..{r_max} …", flush=True)
     t0 = time.perf_counter()
     qfin_text, qfin_csv = report_qfin_table(
-        r_max=r_max, max_q_cap=max_q_cap, progress=True
+        r_max=r_max, max_q_cap=max_q_cap, r_min=r_min, progress=True
     )
     parts.append("")
     parts.append(qfin_text)
@@ -315,10 +329,16 @@ def main() -> None:
 
     # ---- Phase 3: atlases ----
     if do_atlas:
-        print("\n[3/4] Extended atlases …", flush=True)
+        print(
+            f"\n[3/4] Extended atlases n={n_atlas_min}..{n_atlas} …",
+            flush=True,
+        )
         t0 = time.perf_counter()
         atlas_text, atlas_csv = report_extended_atlases(
-            n_max=n_atlas, max_q_cap=max_q_cap, progress=True
+            n_max=n_atlas,
+            max_q_cap=max_q_cap,
+            n_min=n_atlas_min,
+            progress=True,
         )
         parts.append("")
         parts.append(atlas_text)
@@ -330,15 +350,69 @@ def main() -> None:
         parts.append("(atlases skipped: QH_DO_ATLAS=0)")
         checkpoint()
 
-    # ---- Phase 4: stable formula ----
-    print("\n[4/4] Stable formula check …", flush=True)
+    # ---- Phase 4: stable formula (only for r in range with r>=2) ----
+    print(f"\n[4/4] Stable formula check r={nr_lo}..{r_max} …", flush=True)
     t0 = time.perf_counter()
-    parts.append("")
-    parts.append(
-        experiment1_stable_formula(
+    # experiment1 loops 2..r_max; for r_min>2 still fine to re-check lower
+    # only if r_min<=2. When r_min>2, run a thin loop inline.
+    if nr_lo <= 2:
+        formula_text = experiment1_stable_formula(
             r_max=r_max, max_q_cap=max_q_cap, progress=True
         )
-    )
+    else:
+        from quotient_hyperfields.experiments import (
+            baker_jin_residue,
+            prime_powers_with_index,
+        )
+        from quotient_hyperfields.hyperfield import QuotientHyperfield
+        from quotient_hyperfields.papers_experiments import (
+            expected_stable_invariants,
+        )
+
+        lines = [
+            "EXPERIMENT 1 — Stable (char, C-char) formula (range subset)",
+            "=" * 60,
+            f"r={nr_lo}..{r_max}, max_q_cap={max_q_cap}",
+            f"{'r':>3} {'#large':>7} {'ok':>5} {'fail':>5} {'status':>8}",
+        ]
+        all_pass = True
+        for r in range(nr_lo, r_max + 1):
+            print(f"=== Exp1 formula r={r} ===", flush=True)
+            n12 = baker_jin_bound_sharp(r)
+            limit = resolve_scan_limit(r, max_q_cap=max_q_cap)
+            qs = [q for q in prime_powers_with_index(r, limit) if q >= n12]
+            failures: list[str] = []
+            for q in qs:
+                h = QuotientHyperfield.from_q_r(q, r)
+                exp_ch, exp_cc = expected_stable_invariants(r, q)
+                if (h.char, h.c_char) != (exp_ch, exp_cc):
+                    failures.append(
+                        f"q={q} res={baker_jin_residue(q, r)}: "
+                        f"got ({h.char},{h.c_char}) expected ({exp_ch},{exp_cc})"
+                    )
+            status = (
+                "PASS" if qs and not failures else ("FAIL" if failures else "EMPTY")
+            )
+            if status != "PASS":
+                all_pass = False
+            lines.append(
+                f"{r:>3} {len(qs):>7} {len(qs) - len(failures):>5} "
+                f"{len(failures):>5} {status:>8}"
+            )
+            for f in failures[:5]:
+                lines.append(f"       {f}")
+        lines.append("")
+        lines.append(
+            "Overall: "
+            + (
+                "formula holds on all tested large quotients."
+                if all_pass
+                else "FAILURES present."
+            )
+        )
+        formula_text = "\n".join(lines)
+    parts.append("")
+    parts.append(formula_text)
     print(f"  done in {time.perf_counter() - t0:.1f}s", flush=True)
 
     wall = time.perf_counter() - t_all
