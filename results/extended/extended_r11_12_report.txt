@@ -1,0 +1,76 @@
+Generated (UTC): 20260812T104725Z
+software: quotient-hyperfields extended suite (v0.2+)
+r_min=11 r_max=12 max_q_cap=15000 n_atlas=12..13 atlas=True
+Goal: new data beyond arXiv:2608.03625 tables (r≤8, n≤7).
+wall_seconds=4826.6
+status=complete
+
+N_r sharpness summary (extended range)
+============================================================
+NEW beyond arXiv table (r≤8): any r≥9 rows below.
+  r    N_emp    N_1.2  emp/1.2      r^4  #exc   max_q
+ 11     1410     8164    0.173    14641    11   12247 *
+ 12     1742    12170    0.143    20736    41   15000 *
+
+* = beyond published paper range (r≤8).
+emp/1.2 < 1 ⇒ Remark 1.2 is not sharp on this scan (empirical threshold below the Weil bound).
+
+Baker–Jin open question (3): true growth of N_r (detail)
+============================================================
+r = 11
+  Remark 1.2 N_r     = 8164
+  Safe r^4 N_r       = 14641
+  Paper lower bound  = None
+  Empirical N_r      = 1410
+  # prime powers ≤ 12247 with r | (q-1): 153
+  # exceptions (non-stable fps): 11
+  verified up to     = 12247
+  exception qs       = q=23(odd), q=67(odd), q=89(odd), q=199(odd), q=331(odd), q=353(odd), q=419(odd), q=463(odd), q=617(odd), q=947(odd), q=1409(odd)
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 8164 is not sharp on this scan (empirical 1410 < 8164)
+
+r = 12
+  Remark 1.2 N_r     = 12170
+  Safe r^4 N_r       = 20736
+  Paper lower bound  = 122
+  Empirical N_r      = 1742
+  # prime powers ≤ 15000 with r | (q-1): 457
+  # exceptions (non-stable fps): 41
+  verified up to     = 15000
+  exception qs       = q=13(even_1), q=25(even_0), q=37(even_1), q=49(even_0), q=61(even_1), q=73(even_0), q=97(even_0), q=109(even_1), q=121(even_0), q=157(even_1), q=169(even_0), q=181(even_1), ...
+  note: empirical N_r = 1 + max exception q (minimal threshold consistent with scanned counterexamples)
+  note: Remark 1.2 bound 12170 is not sharp on this scan (empirical 1742 < 12170)
+
+
+Baker–Jin open question (4): Q_r^{fin} (finite-field quotients)
+============================================================
+Q_r^{fin} = # iso classes of F_q/G of order r+1.
+NEW: rows with r>8 (order>9) are beyond the arXiv census.
+Range: r=11..12.
+
+  r  order  Q_r^fin   N_r(1.2)   max_q  complete
+ 11     12        9       8164   12247      True *
+ 12     13       36      12170   15000      True *
+
+* = beyond published paper range (r≤8).
+
+Extended finite-field quotient atlases
+============================================================
+Orders n=12..13, max_q_cap=15000.
+For n≥8 there is no published H_n in our literature table —
+these Q_fin values are new computational census data.
+
+  n   r  Q_fin   H_lit    ratio  complete   N_r(1.2)   max_q
+ 12  11      9       —        —      True       8164   12247  (175.5s) *
+ 13  12     36       —        —      True      12170   15000  (1476.0s) *
+
+* = order beyond Massouros/Ameri comparison in the paper (n≤7).
+
+EXPERIMENT 1 — Stable (char, C-char) formula (range subset)
+============================================================
+r=11..12, max_q_cap=15000
+  r  #large    ok  fail   status
+ 11      43    43     0     PASS
+ 12      76    76     0     PASS
+
+Overall: formula holds on all tested large quotients.

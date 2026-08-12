@@ -1,0 +1,13 @@
+r,order,Q_fin,complete,beyond_paper,source
+1,2,2,False,False,r10_run
+2,3,4,True,False,r10_run
+3,4,4,True,False,r10_run
+4,5,9,True,False,r10_run
+5,6,7,True,False,r10_run
+6,7,15,True,False,r10_run
+7,8,9,True,True,r10_run
+8,9,17,True,True,r10_run
+9,10,14,True,True,r10_run
+10,11,27,True,True,r10_run
+11,12,9,True,True,r11_12_run
+12,13,36,True,True,r11_12_run
